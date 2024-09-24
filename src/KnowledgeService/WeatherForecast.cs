@@ -1,4 +1,4 @@
-namespace knowledge_service;
+namespace KnowledgeService;
 
 public class WeatherForecast
 {
