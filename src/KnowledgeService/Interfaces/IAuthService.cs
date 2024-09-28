@@ -6,5 +6,5 @@ namespace KnowledgeService.Interfaces;
 public interface IAuthService
 {
   Task<Result<TokenModel>> SignInAsync(SignInModel request);
-  Task<Result<IdentityError>> SignUpAsync(SignUpModel request);
+  Task<Result<IdentityResult>> SignUpAsync(SignUpModel request);
 }
