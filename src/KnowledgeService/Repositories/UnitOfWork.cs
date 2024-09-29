@@ -1,49 +1,51 @@
-using KnowledgeService.Interfaces;
-using KnowledgeService.Entities;
 using KnowledgeService.Contexts;
+using KnowledgeService.Entities;
+using KnowledgeService.Interfaces;
+
+namespace KnowledgeService.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-  private readonly ApplicationDbContext _dbContext;
-  private bool disposed;
+    private readonly ApplicationDbContext _dbContext;
+    private bool disposed;
 
-  private IRepository<Test> _testRepository;
+    private IRepository<Test> _testRepository;
 
-  public IRepository<Test> Tests => _testRepository ??= new Repository<Test>(_dbContext);
+    public IRepository<Test> Tests => _testRepository ??= new Repository<Test>(_dbContext);
 
-  public UnitOfWork(ApplicationDbContext dbContext)
-  {
-    _dbContext = dbContext;
-  }
-
-  public async Task SaveChangesAsync()
-  {
-    await _dbContext.SaveChangesAsync();
-  }
-
-  public void Dispose()
-  {
-    Dispose(true);
-    GC.SuppressFinalize(this);
-  }
-
-  private void Dispose(bool disposing)
-  {
-    if (disposed)
+    public UnitOfWork(ApplicationDbContext dbContext)
     {
-      return;
+        _dbContext = dbContext;
     }
 
-    if (disposing)
+    public async Task SaveChangesAsync()
     {
-      _dbContext?.Dispose();
+        await _dbContext.SaveChangesAsync();
     }
 
-    disposed = true;
-  }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
-  ~UnitOfWork()
-  {
-    Dispose(false);
-  }
+    private void Dispose(bool disposing)
+    {
+        if (disposed)
+        {
+            return;
+        }
+
+        if (disposing)
+        {
+            _dbContext?.Dispose();
+        }
+
+        disposed = true;
+    }
+
+    ~UnitOfWork()
+    {
+        Dispose(false);
+    }
 }

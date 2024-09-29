@@ -1,3 +1,4 @@
+using KnowledgeService.Configurations;
 using KnowledgeService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

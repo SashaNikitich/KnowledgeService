@@ -6,7 +6,7 @@ using KnowledgeService.Interfaces;
 using KnowledgeService.Services;
 using KnowledgeService.Contexts;
 using KnowledgeService.Entities;
-
+using KnowledgeService.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
