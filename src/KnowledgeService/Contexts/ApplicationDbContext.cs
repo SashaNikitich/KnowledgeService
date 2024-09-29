@@ -17,8 +17,6 @@ public sealed class ApplicationDbContext : IdentityDbContext<User>
         builder.ApplyConfiguration(new UserConfiguration());
         builder.ApplyConfiguration(new TestConfiguration());
 
-
-
         base.OnModelCreating(builder);
     }
 }
