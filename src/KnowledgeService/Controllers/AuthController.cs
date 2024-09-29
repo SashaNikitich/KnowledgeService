@@ -15,11 +15,11 @@ public class AuthController : ControllerBase
   public AuthController(IAuthService authService, ILogger<AuthController> logger)
   {
     _authService = authService;
-    _logger = logger;
+     _logger = logger;
   }
 
-  [HttpPost(nameof(SingUp))]
-  public async Task<ActionResult<Result<IdentityResult>>> SingUp(SignUpModel signUpModel)
+  [HttpPost("register")]
+  public async Task<ActionResult<Result<IdentityResult>>> SingUpAsync(SignUpModel signUpModel)
   {
     var identityResult = await _authService.SignUpAsync(signUpModel);
 

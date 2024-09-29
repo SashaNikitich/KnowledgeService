@@ -118,16 +118,10 @@ public static class ConfigureExtension
     }
   }
 
-  public static async Task HostRunAsync(this IHost host)
+  public static async Task InitUsersAsync(this IServiceProvider serviceProvider)
   {
-    using (var scope = host.Services.CreateScope())
-    {
-      var services = scope.ServiceProvider;
-
-      var userManager = services.GetRequiredService<UserManager<User>>();
-      var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+      var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+      var rolesManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
       await InitAsync(userManager, rolesManager);
-    }
-    await host.RunAsync();
   }
 }

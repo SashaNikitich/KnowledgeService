@@ -14,7 +14,11 @@ builder.Services.AddDbConfigure(builder.Configuration);
 
 var app = builder.Build();
 
-await app.HostRunAsync();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await services.InitUsersAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
