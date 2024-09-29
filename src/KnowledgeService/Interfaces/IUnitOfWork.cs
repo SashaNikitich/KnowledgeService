@@ -3,6 +3,6 @@ using KnowledgeService.Entities;
 
 public interface IUnitOfWork : IDisposable
 {
-  IRepository<Test> Tests { get; }
-  Task SaveChangesAsync();
+    IRepository<Test> Tests { get; }
+    Task SaveChangesAsync();
 }

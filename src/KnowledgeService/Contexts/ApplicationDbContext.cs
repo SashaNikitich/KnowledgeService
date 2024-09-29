@@ -7,18 +7,18 @@ namespace KnowledgeService.Contexts;
 
 public sealed class ApplicationDbContext : IdentityDbContext<User>
 {
-  public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-  {
-    Database.EnsureCreated();
-  }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+        Database.EnsureCreated();
+    }
 
-  protected override void OnModelCreating(ModelBuilder builder)
-  {
-    builder.ApplyConfiguration(new UserConfiguration());
-    builder.ApplyConfiguration(new TestConfiguration());
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.ApplyConfiguration(new UserConfiguration());
+        builder.ApplyConfiguration(new TestConfiguration());
 
-    
 
-    base.OnModelCreating(builder);
-  }
+
+        base.OnModelCreating(builder);
+    }
 }
