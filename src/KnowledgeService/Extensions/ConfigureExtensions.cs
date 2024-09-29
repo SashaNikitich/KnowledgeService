@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
-
+using KnowledgeService.Constants;
 using KnowledgeService.Settings;
 using KnowledgeService.Interfaces;
 using KnowledgeService.Services;
@@ -16,11 +16,8 @@ namespace KnowledgeService.Extensions;
 
 public static class ConfigureExtension
 {
-  // Sets JWT configuration.
   public static void AddJwtConfigure(this IServiceCollection services, IConfiguration cfg)
   {
-    // services.Configure<AuthorizationSettings>(cfg.GetSection(nameof(AuthorizationSettings)));
-
     var settings = cfg.GetRequiredSection(nameof(AuthorizationSettings)).Get<AuthorizationSettings>();
 
     services.AddSingleton<IAuthorizationSettings, AuthorizationSettings>(_ => settings ?? throw new InvalidOperationException());

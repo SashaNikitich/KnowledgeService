@@ -18,16 +18,16 @@ public class AuthController : ControllerBase
      _logger = logger;
   }
 
-  [HttpPost("register")]
-  public async Task<ActionResult<Result<IdentityResult>>> SingUpAsync(SignUpModel signUpModel)
+  [HttpPost("SignIn")]
+  public async Task<ActionResult<Result<IdentityResult>>> SignUpAsync(SignUpModel signUpModel)
   {
     var identityResult = await _authService.SignUpAsync(signUpModel);
 
     return identityResult;
   }
 
-  [HttpPost(nameof(SignIn))]
-  public async Task<ActionResult<Result<TokenModel>>> SignIn(SignInModel signInModel)
+  [HttpPost("SignIn")]
+  public async Task<ActionResult<Result<TokenModel>>> SignInAsync(SignInModel signInModel)
   {
     var token = await _authService.SignInAsync(signInModel);
 
